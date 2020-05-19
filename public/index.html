@@ -6,18 +6,15 @@
         <!-- Firebase Auth UI -->
         <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
         <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.0.0/p5.min.js"></script>
+        <script src="js/snake.js"></script>
+        <script src="js/game.js"></script>
+        
     </head>
     <body>
         <h1>Snake with Firebase</h1>
                
         <div id="firebaseui-auth-container"></div>
-        
-
-
-
-
-
-
         <!-- Insert these scripts at the bottom of the HTML, but before you use any Firebase services -->
 
         <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -73,7 +70,8 @@
                         var uid = user.uid;
                         var providerData = user.providerData;
                         // ...
-                        console.log(user)
+                        //console.log(user)
+                        
                     } else {
                         // User is signed out.
                         // ...
