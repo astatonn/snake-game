@@ -1,26 +1,55 @@
 const cellZise = 20;
 const boardSize = 10;
+const frame = 5;
 
 let snake;
 const side = cellZise * boardSize;
 const half = side/2;
 let counter = 0;
+let fruit;
 function setup(){   
     createCanvas(side, side);
     snake = new Snake();
     snake.start(half,half, cellZise);
+    setFruit();
     //frameRate(1);
 }
 
+function setFruit(){
+    fruit = new Part(parseInt(random(0,9)) * cellZise, parseInt(random(0,9))*cellZise);
+}
+
 function draw(){
-    if(counter >= 15){    
+    fill('white')
+    if(counter >= frame){    
         background(200);
         boardLines(); 
+        if(eating(snake, fruit)){
+            snake.hasEaten = true;
+            setFruit();
+        }
+
+        if(snake.collision()){
+            snake.start(half,half, cellZise);
+        }
+
         snake.update(cellZise, side);   
-        counter =0;       
+        counter =0;    
+        fill('red');
+        square(fruit.x, fruit.y, cellZise);   
     }
     userInput(); 
     counter++;
+}
+
+function eating(snake, fruit){
+    let head = snake.body[snake.body.length -1 ];
+    let x = head.x == fruit.x;
+    let y = head.y == fruit.y;
+    if(x&y){
+        console.log('The Snake has eaten!!!');
+    }
+    return x&y;
 }
 
 function boardLines(){
@@ -31,17 +60,17 @@ function boardLines(){
 }
 
 function userInput(){
-    if(keyIsDown(UP_ARROW)){
+    if(keyIsDown(UP_ARROW) && snake.dir != 'down'){
         //console.log('UP');
         snake.dir = 'up';
     }
-    if(keyIsDown(RIGHT_ARROW)){
+    if(keyIsDown(RIGHT_ARROW) && snake.dir != 'left'){
         snake.dir = 'right';
     }
-    if(keyIsDown(DOWN_ARROW)){
+    if(keyIsDown(DOWN_ARROW) && snake.dir != 'up'){
         snake.dir = 'down';
     }
-    if(keyIsDown(LEFT_ARROW)){
+    if(keyIsDown(LEFT_ARROW) && snake.dir != 'right'){
         snake.dir = 'left';
     }
 }
