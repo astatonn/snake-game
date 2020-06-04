@@ -9,9 +9,9 @@ class Snake{
     start(x,y, size){
         console.log('Starting the snake')
         this.body = [];
+        this.body.push(new Part(x-size-size,y));
+        this.body.push(new Part(x-size,y));
         this.body.push(new Part(x,y));
-        this.body.push(new Part(x-1,y));
-        this.body.push(new Part(x-2,y));
         this.size = size;
         this.dir = 'right';
     }

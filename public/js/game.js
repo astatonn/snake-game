@@ -1,5 +1,5 @@
 const cellZise = 20;
-const boardSize = 10;
+const boardSize = 40;
 const frame = 5;
 
 let snake;
@@ -10,13 +10,13 @@ let fruit;
 function setup(){   
     createCanvas(side, side);
     snake = new Snake();
-    snake.start(half,half, cellZise);
+    snake.start(parseInt(half),parseInt(half), cellZise);
     setFruit();
     //frameRate(1);
 }
 
 function setFruit(){
-    fruit = new Part(parseInt(random(0,9)) * cellZise, parseInt(random(0,9))*cellZise);
+    fruit = new Part(parseInt(random(0,boardSize)) * cellZise, parseInt(random(0,boardSize))*cellZise);
 }
 
 function draw(){
