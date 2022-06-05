@@ -1,3 +1,5 @@
+
+
 const cellZise = 20;
 const boardSize = 40;
 const frame = 5;
