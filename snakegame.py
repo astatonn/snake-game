@@ -1,4 +1,3 @@
-import math
 import random
 import pygame
 import tkinter as tk
@@ -143,7 +142,7 @@ def drawGrid(w, rows, surface):
 def init_font(surface):
 
     font = pygame.font.Font('freesansbold.ttf', 32)
-    text = font.render('Score: '+str(len(s.body)), True,
+    text = font.render('Placar: '+str(len(s.body)), True,
                        (255, 255, 255))
     textRect = text.get_rect()
     textRect.center = (570, 20)
